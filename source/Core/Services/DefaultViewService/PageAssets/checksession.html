@@ -69,6 +69,9 @@
                 }
 
                 var currentSessionId = getBrowserSessionId();
+                if (!currentSessionId) {
+                    return "error";
+                }
                 var expectedHash = computeSessionStateHash(clientId, origin, currentSessionId, salt);
                 return clientHash === expectedHash ? "unchanged" : "changed";
             }
